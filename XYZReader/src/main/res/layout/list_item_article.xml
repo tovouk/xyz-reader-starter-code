@@ -2,36 +2,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="@dimen/four"
+    android:layout_marginRight="@dimen/four"
+    android:layout_marginTop="@dimen/four"
+    android:layout_marginBottom="@dimen/four"
     android:clickable="true"
     android:focusable="true"
+    android:id="@+id/cardview"
+    android:elevation="@dimen/cardElevation"
     android:foreground="?selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/border">
 
         <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/photo_placeholder" />
+            android:scaleType="fitXY"
+            android:background="@color/theme_primary_light" />
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2dp"-->
+            <!--android:background="@color/white"-->
+            <!--/>-->
 
         <TextView
             android:id="@+id/article_title"
             style="@style/TextAppearance.AppCompat.Subhead"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/ltgray"
+            android:paddingLeft="@dimen/sixteen"
+            android:paddingTop="@dimen/sixteen"
+            android:paddingRight="@dimen/sixteen"
+            android:paddingBottom="@dimen/four"
+            android:background="@color/theme_primary_light"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:ellipsize="end"
             android:maxLines="4" />
 
@@ -40,10 +51,11 @@
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:textColor="#6000"
+            android:paddingLeft="@dimen/sixteen"
+            android:paddingRight="@dimen/sixteen"
+            android:paddingBottom="@dimen/sixteen"
+            android:textColor="@color/ltgray"
+            android:background="@color/theme_primary_light"
             android:maxLines="2"
             android:ellipsize="end" />
     </LinearLayout>

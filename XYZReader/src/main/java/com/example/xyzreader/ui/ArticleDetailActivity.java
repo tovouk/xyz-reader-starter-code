@@ -1,14 +1,15 @@
 package com.example.xyzreader.ui;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.LoaderManager;
-import android.content.Loader;
+
+
+
 import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v13.app.FragmentStatePagerAdapter;
+import android.support.annotation.NonNull;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
@@ -48,16 +49,16 @@ public class ArticleDetailActivity extends AppCompatActivity
         }
         setContentView(R.layout.activity_article_detail);
 
-        getLoaderManager().initLoader(0, null, this);
+        getSupportLoaderManager().initLoader(0, null, this);
 
-        mPagerAdapter = new MyPagerAdapter(getFragmentManager());
+        mPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageMargin((int) TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
         mPager.setPageMarginDrawable(new ColorDrawable(0x22000000));
 
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
@@ -72,7 +73,7 @@ public class ArticleDetailActivity extends AppCompatActivity
                     mCursor.moveToPosition(position);
                 }
                 mSelectedItemId = mCursor.getLong(ArticleLoader.Query._ID);
-                updateUpButtonPosition();
+//                updateUpButtonPosition();
             }
         });
 
@@ -93,7 +94,7 @@ public class ArticleDetailActivity extends AppCompatActivity
                     view.onApplyWindowInsets(windowInsets);
                     mTopInset = windowInsets.getSystemWindowInsetTop();
                     mUpButtonContainer.setTranslationY(mTopInset);
-                    updateUpButtonPosition();
+//                    updateUpButtonPosition();
                     return windowInsets;
                 }
             });
@@ -108,12 +109,12 @@ public class ArticleDetailActivity extends AppCompatActivity
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+    public Loader<Cursor> onCreateLoader(@NonNull int i, Bundle bundle) {
         return ArticleLoader.newAllArticlesInstance(this);
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+    public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor cursor) {
         mCursor = cursor;
         mPagerAdapter.notifyDataSetChanged();
 
@@ -134,7 +135,7 @@ public class ArticleDetailActivity extends AppCompatActivity
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> cursorLoader) {
+    public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         mCursor = null;
         mPagerAdapter.notifyDataSetChanged();
     }
@@ -146,31 +147,34 @@ public class ArticleDetailActivity extends AppCompatActivity
 //        }
 //    }
 
-    private void updateUpButtonPosition() {
-        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
-        mUpButton.setTranslationY(Math.min(mSelectedItemUpButtonFloor - upButtonNormalBottom, 0));
-    }
+//    private void updateUpButtonPosition() {
+//        int upButtonNormalBottom = mTopInset + mUpButton.getHeight();
+//        mUpButton.setTranslationY(Math.min(mSelectedItemUpButtonFloor - upButtonNormalBottom, 0));
+//    }
 
-    private class MyPagerAdapter extends FragmentStatePagerAdapter {
-        public MyPagerAdapter(FragmentManager fm) {
+    private class MyPagerAdapter extends android.support.v4.app.FragmentStatePagerAdapter {
+        public MyPagerAdapter(android.support.v4.app.FragmentManager fm) {
             super(fm);
+        }
+
+        @Override
+        public android.support.v4.app.Fragment getItem(int position) {
+
+                mCursor.moveToPosition(position);
+                return ArticleDetailFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
         }
 
         @Override
         public void setPrimaryItem(ViewGroup container, int position, Object object) {
             super.setPrimaryItem(container, position, object);
             ArticleDetailFragment fragment = (ArticleDetailFragment) object;
-            if (fragment != null) {
+//            if (fragment != null) {
 //                mSelectedItemUpButtonFloor = fragment.getUpButtonFloor();
 //                updateUpButtonPosition();
-            }
+//            }
         }
 
-        @Override
-        public Fragment getItem(int position) {
-            mCursor.moveToPosition(position);
-            return ArticleDetailFragment.newInstance(mCursor.getLong(ArticleLoader.Query._ID));
-        }
+
 
         @Override
         public int getCount() {

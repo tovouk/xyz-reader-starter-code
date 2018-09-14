@@ -17,9 +17,8 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        android:elevation="@dimen/appbarElevation"
+        android:layout_height="@dimen/one_six"
         >
 
 
@@ -95,10 +94,11 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/ltgray">
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
 

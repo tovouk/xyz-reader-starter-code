@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/theme_primary_dark">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
@@ -15,28 +16,26 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbarStyle="outsideOverlay"
-            android:paddingTop="116dp"
+            android:paddingTop="@dimen/recyclerViewMarginTop"
             android:paddingLeft="@dimen/list_side_margin"
             android:paddingRight="@dimen/list_side_margin"
-            android:paddingBottom="28dp" />
+            android:paddingBottom="@dimen/ListpaddingBottom" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <FrameLayout
         android:id="@+id/toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/toolbarPadding"
-        android:paddingTop="@dimen/toolbarPadding"
         android:background="@color/theme_primary"
-        android:elevation="8dp">
-
+        android:elevation="@dimen/appbarElevation">
+        <!--I used material's 4dp elevation for this-->
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_marginLeft="@dimen/list_toolbar_side_margin"
             android:layout_marginRight="@dimen/list_toolbar_side_margin"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/theme_primary"
             android:layout_gravity="bottom">
 

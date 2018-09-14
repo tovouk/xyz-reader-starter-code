@@ -4,11 +4,32 @@
     <dimen name="detail_body_text_size">22sp</dimen>
     <item name="detail_body_line_spacing_multiplier" format="float" type="fraction">1.25</item>
 
-    <dimen name="fab_elevation">2dp</dimen>
+
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
+
+
+    <dimen name="recyclerViewMarginTop">80dp</dimen>
+
     <dimen name="toolbarPadding">8dp</dimen>
+    <dimen name="ListpaddingBottom">28dp</dimen>
 
+    <dimen name="titleInset">72dp</dimen>
+    <dimen name="toolbarContent">76dp</dimen>
+    <dimen name="toolbarMarginBottom">2dp</dimen>
 
+    <dimen name="bodyTopMargin">26dp</dimen>
+
+    <dimen name="fab_elevation">6dp</dimen>
+    <dimen name="appbarElevation">4dp</dimen>
+    <dimen name="cardElevation">2dp</dimen>
+
+    <dimen name="four">4dp</dimen>
+    <dimen name="twelve">12dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="hundred">100dp</dimen>
+    <dimen name="one_twelve">112dp</dimen>
+    <dimen name="one_six">160dp</dimen>
+    <dimen name="three_hundred">300dp</dimen>
 
 </resources>
