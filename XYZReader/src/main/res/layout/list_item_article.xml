@@ -9,7 +9,7 @@
     android:clickable="true"
     android:focusable="true"
     android:id="@+id/cardview"
-    android:elevation="@dimen/cardElevation"
+    app:cardElevation="@dimen/cardElevation"
     android:foreground="?selectableItemBackground">
 
     <LinearLayout
@@ -22,8 +22,8 @@
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
             android:background="@color/theme_primary_light" />
         <!--<View-->
             <!--android:layout_width="match_parent"-->

@@ -22,7 +22,7 @@
 
     <dimen name="fab_elevation">6dp</dimen>
     <dimen name="appbarElevation">4dp</dimen>
-    <dimen name="cardElevation">2dp</dimen>
+    <dimen name="cardElevation">1dp</dimen>
 
     <dimen name="four">4dp</dimen>
     <dimen name="twelve">12dp</dimen>
